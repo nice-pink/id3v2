@@ -70,7 +70,7 @@ func TestSequenceUDTFsUniqueness(t *testing.T) {
 	testSequenceAB(t, s)
 
 	// If one more frame added with same unique identifier, it should rewrite the old one.
-	// See https://github.com/bogem/id3v2/issues/42
+	// See https://github.com/nice-pink/id3v2/issues/42
 	valueOfLastFrame := s.Frames()[1].(UserDefinedTextFrame).Value
 	if valueOfLastFrame != "C" {
 		t.Fatalf("Expected value of UserDefinedTextFrame %q, got %q", "C", valueOfLastFrame)

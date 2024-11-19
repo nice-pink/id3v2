@@ -115,7 +115,7 @@ func encodedSize(src string, enc Encoding) int {
 
 // decodeText decodes src from "from" encoding to UTF-8.
 func decodeText(src []byte, from Encoding) string {
-	src = bytes.TrimSuffix(src, from.TerminationBytes) // See https://github.com/bogem/id3v2/issues/41
+	src = bytes.TrimSuffix(src, from.TerminationBytes) // See https://github.com/nice-pink/id3v2/issues/41
 
 	if from.Equals(EncodingUTF8) {
 		return string(src)

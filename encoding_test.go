@@ -57,7 +57,7 @@ func TestEncodeWriteText(t *testing.T) {
 	}
 }
 
-// See https://github.com/bogem/id3v2/issues/51.
+// See https://github.com/nice-pink/id3v2/issues/51.
 func TestUnsynchronisedLyricsFrameWithUTF16(t *testing.T) {
 	contentDescriptor := "Content descriptor"
 	lyrics := "Lyrics"

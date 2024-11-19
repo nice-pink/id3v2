@@ -233,12 +233,20 @@ func (tag *Tag) SetArtist(artist string) {
 	tag.AddTextFrame(tag.CommonID("Artist"), tag.DefaultEncoding(), artist)
 }
 
+// func (tag *Tag) Album() string {
+// 	return tag.GetTextFrame(tag.CommonID("Album/Movie/Show title")).Text
+// }
+
+// func (tag *Tag) SetAlbum(album string) {
+// 	tag.AddTextFrame(tag.CommonID("Album/Movie/Show title"), tag.DefaultEncoding(), album)
+// }
+
 func (tag *Tag) Album() string {
-	return tag.GetTextFrame(tag.CommonID("Album/Movie/Show title")).Text
+	return tag.GetTextFrame(tag.CommonID("Album")).Text
 }
 
 func (tag *Tag) SetAlbum(album string) {
-	tag.AddTextFrame(tag.CommonID("Album/Movie/Show title"), tag.DefaultEncoding(), album)
+	tag.AddTextFrame(tag.CommonID("Album"), tag.DefaultEncoding(), album)
 }
 
 func (tag *Tag) Year() string {
@@ -247,6 +255,14 @@ func (tag *Tag) Year() string {
 
 func (tag *Tag) SetYear(year string) {
 	tag.AddTextFrame(tag.CommonID("Year"), tag.DefaultEncoding(), year)
+}
+
+func (tag *Tag) Date() string {
+	return tag.GetTextFrame(tag.CommonID("Date")).Text
+}
+
+func (tag *Tag) SetDate(year string) {
+	tag.AddTextFrame(tag.CommonID("Date"), tag.DefaultEncoding(), year)
 }
 
 func (tag *Tag) Genre() string {
