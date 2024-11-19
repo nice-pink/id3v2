@@ -58,6 +58,7 @@ var (
 		"Artist": "TPE1",
 		"Title":  "TIT2",
 		"Genre":  "TCON",
+		"Album":  "TALB",
 	}
 
 	V24CommonIDs = map[string]string{
@@ -125,6 +126,7 @@ var (
 		"Artist": "TPE1",
 		"Title":  "TIT2",
 		"Genre":  "TCON",
+		"Album":  "TALB",
 	}
 )
 
@@ -132,9 +134,10 @@ var (
 // parsing of corresponding frame.
 // You should consider that there is no text frame parser. That's why you should
 // check at first, if it's a text frame:
-//	if strings.HasPrefix(id, "T") {
-//  	...
-//	}
+//
+//		if strings.HasPrefix(id, "T") {
+//	 	...
+//		}
 var parsers = map[string]func(*bufReader) (Framer, error){
 	"APIC": parsePictureFrame,
 	"COMM": parseCommentFrame,

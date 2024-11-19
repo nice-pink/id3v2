@@ -234,11 +234,11 @@ func (tag *Tag) SetArtist(artist string) {
 }
 
 func (tag *Tag) Album() string {
-	return tag.GetTextFrame(tag.CommonID("Album/Movie/Show title")).Text
+	return tag.GetTextFrame(tag.CommonID("Album")).Text
 }
 
 func (tag *Tag) SetAlbum(album string) {
-	tag.AddTextFrame(tag.CommonID("Album/Movie/Show title"), tag.DefaultEncoding(), album)
+	tag.AddTextFrame(tag.CommonID("Album"), tag.DefaultEncoding(), album)
 }
 
 func (tag *Tag) Year() string {
@@ -263,6 +263,46 @@ func (tag *Tag) Genre() string {
 
 func (tag *Tag) SetGenre(genre string) {
 	tag.AddTextFrame(tag.CommonID("Content type"), tag.DefaultEncoding(), genre)
+}
+
+func (tag *Tag) Copyright() string {
+	return tag.GetTextFrame(tag.CommonID("Copyright message")).Text
+}
+
+func (tag *Tag) SetCopyright(value string) {
+	tag.AddTextFrame(tag.CommonID("Copyright message"), tag.DefaultEncoding(), value)
+}
+
+func (tag *Tag) Composer() string {
+	return tag.GetTextFrame(tag.CommonID("Composer")).Text
+}
+
+func (tag *Tag) SetComposer(value string) {
+	tag.AddTextFrame(tag.CommonID("Composer"), tag.DefaultEncoding(), value)
+}
+
+func (tag *Tag) Length() string {
+	return tag.GetTextFrame(tag.CommonID("Length")).Text
+}
+
+func (tag *Tag) SetLength(value string) {
+	tag.AddTextFrame(tag.CommonID("Length"), tag.DefaultEncoding(), value)
+}
+
+func (tag *Tag) Bpm() string {
+	return tag.GetTextFrame(tag.CommonID("BPM")).Text
+}
+
+func (tag *Tag) SetBpm(value string) {
+	tag.AddTextFrame(tag.CommonID("BPM"), tag.DefaultEncoding(), value)
+}
+
+func (tag *Tag) Isrc() string {
+	return tag.GetTextFrame(tag.CommonID("ISRC")).Text
+}
+
+func (tag *Tag) SetIsrc(value string) {
+	tag.AddTextFrame(tag.CommonID("ISRC"), tag.DefaultEncoding(), value)
 }
 
 // iterateOverAllFrames iterates over every single frame in tag and calls
