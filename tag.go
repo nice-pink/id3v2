@@ -6,6 +6,7 @@ package id3v2
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"os"
 )
@@ -371,6 +372,7 @@ func (tag *Tag) Save() error {
 	originalFile := file
 	originalStat, err := originalFile.Stat()
 	if err != nil {
+		fmt.Println("org")
 		return err
 	}
 
@@ -395,11 +397,13 @@ func (tag *Tag) Save() error {
 	// Write tag in new file.
 	tagSize, err := tag.WriteTo(newFile)
 	if err != nil {
+		fmt.Println("write")
 		return err
 	}
 
 	// Seek to a music part of original file.
 	if _, err = originalFile.Seek(tag.originalSize, os.SEEK_SET); err != nil {
+		fmt.Println("seek")
 		return err
 	}
 
@@ -407,6 +411,7 @@ func (tag *Tag) Save() error {
 	buf := getByteSlice(128 * 1024)
 	defer putByteSlice(buf)
 	if _, err = io.CopyBuffer(newFile, originalFile, buf); err != nil {
+		fmt.Println("copy buf")
 		return err
 	}
 
@@ -416,6 +421,7 @@ func (tag *Tag) Save() error {
 
 	// Replace original file with new file.
 	if err = os.Rename(newFile.Name(), originalFile.Name()); err != nil {
+		fmt.Println("rename")
 		return err
 	}
 	tempfileShouldBeRemoved = false
@@ -423,6 +429,7 @@ func (tag *Tag) Save() error {
 	// Set tag.reader to new file with original name.
 	tag.reader, err = os.Open(originalFile.Name())
 	if err != nil {
+		fmt.Println("open")
 		return err
 	}
 
